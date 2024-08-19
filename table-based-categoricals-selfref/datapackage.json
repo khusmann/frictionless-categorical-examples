@@ -1,0 +1,57 @@
+{
+  "name": "table-based-categoricals-selfref",
+  "description": "An example datapackage that demonstrates table-based categorical types with a self-referencing hierarchy",
+  "resources": [
+    {
+      "name": "medication-log",
+      "path": "medication_log.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "date"
+          },
+          {
+            "name": "medication_id",
+            "type": "string",
+            "categories": {
+              "resource": "medication_types",
+              "valueField": "medication_id",
+              "labelField": "name"
+            }
+          },
+          {
+            "name": "quantity",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "medication-types",
+      "path": "medication_types.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "medication_id",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "parent_id",
+            "type": "string",
+            "categories": {
+              "valueField": "medication_id",
+              "labelField": "name"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

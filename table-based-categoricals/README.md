@@ -87,9 +87,12 @@ This example illustrates some key differences between `foreignKeys` and
 1. When we define a table-based `categories` property, should the referenced
    field automatically get a `unique` constraint?
 
-2. What happens when definitions of `foreignKeys` and `categories` conflict?
+1. When a `valueField` is not specified, should it default to the name of the
+   current column?
 
-3. Are all single-field `foreignKeys` functionally equivalent to `categories`?
+1. What happens when definitions of `foreignKeys` and `categories` conflict?
+
+1. Are all single-field `foreignKeys` functionally equivalent to `categories`?
    I.e. should single-field `foreignKeys` be considered categorical values?
 
-4. Does the idea of value labels generalize to multi-field `foreignKeys`?
+1. Does the idea of value labels generalize to multi-field `foreignKeys`?

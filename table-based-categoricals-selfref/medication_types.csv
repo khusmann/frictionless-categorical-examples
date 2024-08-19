@@ -1,0 +1,13 @@
+medication_id,name,description,parent_code
+A001,MedAlpha,Pain reliever,C001
+A002,MedBeta,Anti-inflammatory,C001
+A003,MedGamma,Antibiotic,C002
+A004,MedDelta,Antiviral,C002
+B001,MedEpsilon,Blood pressure regulator,C003
+B002,MedZeta,Cholesterol reducer,C003
+B003,MedEta,Diabetes medication,C004
+B004,MedTheta,Antidepressant,C004
+C001,MedIota,General pain management,
+C002,MedKappa,Respiratory treatment,
+C003,MedLambda,Cardiovascular treatment,
+C004,MedMu,Endocrine system treatment,
