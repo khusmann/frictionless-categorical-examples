@@ -22,14 +22,23 @@ definition:
 
 ## Key Features
 
-The [datapackage.json] file in the current directory demonstrates all of the
-features supported by frictionless inline categoricals, including:
+The [datapackage.json](./datapackage.json) file in the current directory
+demonstrates all of the features supported by frictionless inline categoricals,
+including:
+
+Basic categoricals:
 
 - ordered / unordered levels
 - numeric levels
 - string levels
+
+Categorical-level metadata (see [section below](#categorical-level-metadata)):
+
 - coded numeric levels (numbers with labels)
 - coded string levels (strings with labels)
+
+Categorical missing values (see [section below](#missing-values)):
+
 - coded missing values (missing values with labels)
 
 ### Categorical-level metadata
@@ -41,19 +50,25 @@ where the values stored in the data are (often arbitrary) codes with particular
 meanings attached.
 
 For example, a study might code a gender binary in a column as 1: MALE and 2:
-FEMALE. This can be represented in a frictionless categorical definition like
-this:
+FEMALE. Such a categorical can be represented in a frictionless categorical
+definition like this:
 
 ```json
 {
   "name": "gender",
   "type": "number",
   "categories": [
-    { "value": 1, "lable": "MALE" },
+    { "value": 1, "label": "MALE" },
     { "value": 2, "label": "FEMALE" }
   ]
 }
 ```
+
+It's possible for levels to have additional properties, but so far only the
+`label` property is officially supported in frictionless. Extensive categorical
+level metadata gets unwieldly quickly, and so is probably not a good use case
+for inline categoricals. This is where "table-based" categoricals come in;
+discussed in the [next steps](#next-steps), below.
 
 ### Missing values
 
@@ -157,3 +172,18 @@ with tagged missingness:
 For more info on interlaced columns, check out the
 ["Introduction" vignette](https://kylehusmann.com/interlacer/articles/interlacer.html)
 in the interlacer package.
+
+## Next steps
+
+The "inline categorical" definition approach is great for representing simple
+variables, as well as interoperability with native categorical types across many
+statistical file formats (e.g. SPSS, Stata, SAS). However, it has some key
+weaknesses:
+
+- Categorical levels are difficult to reuse across multiple variable definitions
+- Categoricals with many levels get unwieldly quickly
+- Extra categorical level metadata (level descriptions, hierarchical categorical
+  structures, etc.) can get unwieldly quickly
+
+To address these weaknesses, we are considering _table-based_ categorical
+definitions.
