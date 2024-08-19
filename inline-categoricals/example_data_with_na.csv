@@ -1,0 +1,7 @@
+int_cat,string_cat,int_cat_l,string_cat_l
+1,apple,1,a
+2,orange,3,a
+-99,REFUSED,1,SKIPPED
+3,banana,-99,o
+-98,SKIPPED,2,b
+2,apple,-98,REFUSED

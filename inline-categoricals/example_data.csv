@@ -1,0 +1,7 @@
+int_cat,string_cat,int_cat_l,string_cat_l
+1,apple,1,a
+2,orange,3,a
+1,orange,1,b
+3,banana,1,o
+1,orange,2,b
+2,apple,2,o

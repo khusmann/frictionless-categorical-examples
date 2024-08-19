@@ -1,0 +1,102 @@
+{
+  "name": "inline-categoricals",
+  "description": "An example datapackage that demonstrates inline categorical types",
+  "resources": [
+    {
+      "name": "example-data",
+      "path": "example_data.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "missingValues": [],
+        "fields": [
+          {
+            "name": "num_cat",
+            "type": "integer",
+            "description": "A categorical variable with three integer options",
+            "categories": [1, 2, 3],
+            "categoriesOrdered": true
+          },
+          {
+            "name": "str_cat",
+            "type": "string",
+            "description": "A categorical variable with three string options",
+            "categories": ["apple", "orange", "banana"],
+            "categoriesOrdered": false
+          },
+          {
+            "name": "int_cat_l",
+            "type": "integer",
+            "description": "A categorical variable with three integer options, each with labels",
+            "categories": [
+              { "value": 1, "label": "apple" },
+              { "value": 2, "label": "orange" },
+              { "value": 3, "label": "banana" }
+            ],
+            "categoriesOrdered": false
+          },
+          {
+            "name": "str_cat_l",
+            "type": "string",
+            "description": "A categorical variable with three string options, each with labels",
+            "categories": [
+              { "value": "a", "label": "apple" },
+              { "value": "o", "label": "orange" },
+              { "value": "b", "label": "banana" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "example-data-with-na",
+      "path": "example_data_with_na.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "int_cat",
+            "type": "integer",
+            "description": "A categorical variable with three integer options",
+            "categories": [1, 2, 3],
+            "categoriesOrdered": true,
+            "missingValues": ["-99", "-98"]
+          },
+          {
+            "name": "str_cat",
+            "type": "string",
+            "description": "A categorical variable with three string options",
+            "categories": ["apple", "orange", "banana"],
+            "categoriesOrdered": false,
+            "missingValues": ["REFUSED", "SKIPPED"]
+          },
+          {
+            "name": "int_cat_l",
+            "type": "integer",
+            "description": "A categorical variable with three integer options, each with labels",
+            "categories": [
+              { "value": 1, "label": "apple" },
+              { "value": 2, "label": "orange" },
+              { "value": 3, "label": "banana" }
+            ],
+            "categoriesOrdered": false,
+            "missingValues": [
+              { "value": "-98", "label": "REFUSED" },
+              { "value": "-99", "label": "SKIPPED" }
+            ]
+          },
+          {
+            "name": "str_cat_l",
+            "type": "string",
+            "description": "A categorical variable with three string options, each with labels",
+            "categories": [
+              { "value": "a", "label": "apple" },
+              { "value": "o", "label": "orange" },
+              { "value": "b", "label": "banana" }
+            ],
+            "missingValues": ["REFUSED", "SKIPPED"]
+          }
+        ]
+      }
+    }
+  ]
+}
