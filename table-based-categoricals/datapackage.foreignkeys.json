@@ -1,0 +1,101 @@
+{
+  "name": "table-based-categoricals",
+  "description": "An example datapackage that demonstrates table-based categorical types",
+  "resources": [
+    {
+      "name": "diet_log",
+      "path": "diet_log.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "foreignKeys": [
+          {
+            "fields": ["item_code"],
+            "reference": {
+              "resource": "items",
+              "fields": ["item_id"]
+            }
+          }
+        ],
+        "fields": [
+          {
+            "name": "date",
+            "type": "date"
+          },
+          {
+            "name": "participant_id",
+            "type": "integer"
+          },
+          {
+            "name": "item_code",
+            "type": "integer"
+          },
+          {
+            "name": "quantity",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "items",
+      "path": "items.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "primaryKey": ["item_id"],
+        "foreignKeys": [
+          {
+            "fields": ["meal_type"],
+            "reference": {
+              "resource": "meal_types",
+              "fields": ["meal_type"]
+            }
+          }
+        ],
+        "fields": [
+          {
+            "name": "item_id",
+            "type": "integer"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "weight_g",
+            "type": "number"
+          },
+          {
+            "name": "calories",
+            "type": "number"
+          },
+          {
+            "name": "meal_type",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "meal_types",
+      "path": "meal_types.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "primaryKey": "meal_type",
+        "fields": [
+          {
+            "name": "meal_type",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "popularity",
+            "type": "number"
+          }
+        ]
+      }
+    }
+  ]
+}

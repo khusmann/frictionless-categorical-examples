@@ -1,0 +1,11 @@
+item_id,name,weight_g,calories,meal_type
+1,cookies,50,250,dessert
+2,pizza,150,400,entree
+3,apple,182,95,fruit
+4,banana,118,105,fruit
+5,sandwich,200,300,entree
+6,yogurt,150,100,appetizer
+7,pasta,250,350,entree
+8,orange,130,62,fruit
+9,ice cream,100,200,dessert
+10,salad,150,80,entree
