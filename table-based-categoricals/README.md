@@ -17,14 +17,14 @@ The datapackage has the following model / relationship between tables:
 
 ```mermaid
 erDiagram
-    diet_log ||--|{ items : item_code is defined item_id in items
+    diet_log ||--|{ items : "item_code is defined item_id in items"
     diet_log {
         date date
         integer participant_id
         integer item_code
         number quantity
     }
-    items ||--|{ meal_types : meal_type is defined by meal_type in meal_types
+    items ||--|{ meal_types : "meal_type is defined by meal_type in meal_types"
     items {
         integer item_id
         string name
