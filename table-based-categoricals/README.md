@@ -90,6 +90,12 @@ This example illustrates some key differences between `foreignKeys` and
 1. When a `valueField` is not specified, should it default to the name of the
    current column?
 
+1. Right now, `categoriesOrdered` is separate from the `categories` property.
+   This means that when re-using a table-based categorical definition, it must
+   be redefined in each field. Should `categoriesOrdered` be part of the Table
+   referenced by `categories` somehow? Or should the concept of ordering remain
+   decoupled?
+
 1. What happens when definitions of `foreignKeys` and `categories` conflict?
 
 1. Are all single-field `foreignKeys` functionally equivalent to `categories`?
