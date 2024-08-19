@@ -4,7 +4,7 @@ Inline categoricals are implemented in v2 of the Frictionless Datapackage
 specification via two properties:
 [categories](https://datapackage.org/standard/table-schema/#categories), and
 [categoriesOrdered](https://datapackage.org/standard/table-schema/#categoriesOrdered).
-These properties extend `integfer` and `string` field types with categorical
+These properties extend `integer` and `string` field types with categorical
 information (available levels, and ordering, respectively).
 
 Here's a basic example of a frictionless field with an inline categorical
@@ -37,7 +37,7 @@ Categorical-level metadata (see [section below](#categorical-level-metadata)):
 - coded numeric levels (numbers with labels)
 - coded string levels (strings with labels)
 
-Categorical missing values (see [section below](#missing-values)):
+Categorical missing values (see [section below](#coded-missing-values)):
 
 - coded missing values (missing values with labels)
 
@@ -70,15 +70,37 @@ level metadata gets unwieldly quickly, and so is probably not a good use case
 for inline categoricals. This is where "table-based" categoricals come in;
 discussed in the [next steps](#next-steps), below.
 
-### Missing values
+### Coded missing values
 
-Missing values are
+Missing values are often represented with _codes_, similar to coded categorical
+values (categorical values with labels). For example, a study might use the code
+`-99` to represent a `REFUSED` response, and `-98` to represent a `SKIPPED`
+response.
+
+To support data with coded missing values, frictionless datapackage v2 provides
+an extension of the `missingValues` property with a similar structure as the
+`categories` property. Here's an example of a field with coded missing values:
+
+```json
+{
+  "name": "field_with_missing_values",
+  "type": "number",
+  "missingValues": [
+    { "value": "-99", "label": "REFUSED" },
+    { "value": "-98", "label": "SKIPPED" }
+  ]
+}
+```
+
+Note that this extension of `missingValues` can be used with ALL field types,
+not just categorical field types.
 
 ## Example implementation ([interlacer](https://kylehusmann.com/interlacer) + [frictionless-r](https://docs.ropensci.org/frictionless/))
 
 I have an
 [outstanding PR in frictionless-r](https://github.com/frictionlessdata/frictionless-r/pull/213)
-that implements the frictionless v2 spec for inline categoricals.
+that implements the frictionless v2 spec for inline categoricals (and coded
+missing values).
 
 You can try it out by installing the "interlacer" branch of frictionless-r from
 my github fork:

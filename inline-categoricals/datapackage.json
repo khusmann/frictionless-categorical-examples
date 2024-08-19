@@ -80,8 +80,8 @@
             ],
             "categoriesOrdered": false,
             "missingValues": [
-              { "value": "-98", "label": "REFUSED" },
-              { "value": "-99", "label": "SKIPPED" }
+              { "value": "-99", "label": "REFUSED" },
+              { "value": "-98", "label": "SKIPPED" }
             ]
           },
           {
