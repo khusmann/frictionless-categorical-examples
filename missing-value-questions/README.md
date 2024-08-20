@@ -90,7 +90,7 @@ represented in four ways:
 1. As `string` categories
 2. As `number` categories
 3. As coded `string` categories (`strings` with labels)
-4. As coded `numbe` categories (`numbers` with labels)
+4. As coded `number` categories (`numbers` with labels)
 
 All of these cases are covered by the current form of the `categories` property,
 and could also potentially be adopted by the `missingValues` property. For
