@@ -283,3 +283,70 @@ code,label,description
 -99,REFUSED,The participant refused to answer the question
 -98,SKIPPED,The participant skipped the question
 ```
+
+## Outstanding issue #3: What about missing reasons in a separate column?
+
+In some data sources, missing value codes / labels are stored in a separate
+column. For example:
+
+```csv
+field1,field2
+1,REFUSED
+2,9
+SKIPPED,8
+```
+
+Might be represented with a separate value / missing column as follows:
+
+```csv
+field1,field1_missing,field2,field2_missing
+1,,,REFUSED
+2,,9,
+,SKIPPED,8,
+```
+
+Why do we care about this? I expect that we'll see this a lot more in practice
+as formats like DuckDB and Parquet get adopted, because they don't allow
+interlacing different types into the same column (like CSV does)
+
+A schema for the above table might look like this:
+
+```json
+{
+  "fields": [
+    { "name": "field1", "type": "number" },
+    { "name": "field1_missing", "type": "string" },
+    { "name": "field2", "type": "number" },
+    { "name": "field2_missing", "type": "string" }
+  ]
+}
+```
+
+... but we have no way of specifying the connection between `field1` and
+`field1_missing`. Ideally, we'd like to specify this to make it possible to
+automatically interlace these values if we want to when exporting to an
+interlaced format like SAS / SPSS / Stata.
+
+Maybe something like this?
+
+```json
+{
+  "fields": [
+    {
+      "name": "field1",
+      "type": "number",
+      "missingValues": { "fromField": "field1_missing" }
+    },
+    { "name": "field1_missing", "type": "string" },
+    {
+      "name": "field2",
+      "type": "number",
+      "missingValues": { "fromField": "field2_missing" }
+    },
+    { "name": "field2_missing", "type": "string" }
+  ]
+}
+```
+
+...I'm not sure I really like this approach, but I can't really pinpoint the
+reason why.
