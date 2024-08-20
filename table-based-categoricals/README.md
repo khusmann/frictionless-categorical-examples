@@ -87,6 +87,9 @@ This example illustrates some key differences between `foreignKeys` and
 1. When we define a table-based `categories` property, should the referenced
    field automatically get a `unique` constraint?
 
+1. When we define a table-based `categories` property, should the referenced
+   field automatically get a `not null` constraint? (i.e. `missingValues: []`)
+
 1. When a `valueField` is not specified, should it default to the name of the
    current column?
 
