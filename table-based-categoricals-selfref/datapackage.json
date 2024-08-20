@@ -16,9 +16,7 @@
             "name": "medication_id",
             "type": "string",
             "categories": {
-              "resource": "medication_types",
-              "valueField": "medication_id",
-              "labelField": "name"
+              "resource": "medication_types"
             }
           },
           {
@@ -31,7 +29,9 @@
     {
       "name": "medication-types",
       "path": "medication_types.csv",
-      "profile": "tabular-data-resource",
+      "type": "category-table",
+      "valueField": "medication_id",
+      "labelField": "name",
       "schema": {
         "fields": [
           {

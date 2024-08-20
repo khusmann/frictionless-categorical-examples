@@ -14,14 +14,23 @@ setting `categories` to be an object of the following form:
 
 ```
 {
-    "resource": <resource name>,
-    "valueField": <field name>,
-    "labelField"?: <label field name>
+    "package"?: <package name>,
+    "resource": <resource name>
 }
 ```
 
-(the `labelField` property is optional, similar to how the `label` property is
-optional in inline categoricals)
+The referenced resource should be of `"type": "category-table"`. Category table
+resources have the following extra fields:
+
+```
+{
+    "name": <field name>,
+    "type": "category-table",
+    "valueField"?: <field name> (default = "value"),
+    "labelField"?: <field name> (default = "label"),
+    ...Table Resource fields
+}
+```
 
 ## Example
 
@@ -85,28 +94,33 @@ This example illustrates some key differences between `foreignKeys` and
 ## Some theoretical questions
 
 1. When we define a table-based `categories` property, should the referenced
-   field automatically get a `unique` constraint?
+   value and label fields automatically get a `unique` constraint? (yes)
 
 1. When we define a table-based `categories` property, should the referenced
    field automatically get a `not null` constraint? (i.e. `missingValues: []`)
+   (yes)
 
 1. When a `valueField` is not specified, should it default to the name of the
-   current column?
+   current column? (No, it should default to "value"; and "labelField" should
+   default to "label")
 
-1. Must the type of the current field match the foreign `valueField`?
+1. Must the type of the current field match the foreign `valueField`? (yes)
 
 1. Right now, `categoriesOrdered` is separate from the `categories` property.
    This means that when re-using a table-based categorical definition, it must
    be redefined in each field. Should `categoriesOrdered` be part of the Table
    referenced by `categories` somehow? Or should the concept of ordering remain
-   decoupled?
+   decoupled? (This is addressed via the "category-table" pattern)
 
 1. Can the foreign `valueField` have the `categories` or `categoriesOrdered`
-   property defined? Might this be useful for the above issue?
+   property defined? Might this be useful for the above issue? (Value field MUST
+   be bare integer or string, so no `categories` or `categoriesOrdered`)
 
 1. What happens when definitions of `foreignKeys` and `categories` conflict?
+   (Error: choose only one representation)
 
 1. Are all single-field `foreignKeys` functionally equivalent to `categories`?
    I.e. should single-field `foreignKeys` be considered categorical values?
+   (N/A)
 
-1. Does the idea of value labels generalize to multi-field `foreignKeys`?
+1. Does the idea of value labels generalize to multi-field `foreignKeys`? (N/A)

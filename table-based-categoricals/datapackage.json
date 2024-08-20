@@ -5,7 +5,6 @@
     {
       "name": "diet_log",
       "path": "diet_log.csv",
-      "profile": "tabular-data-resource",
       "schema": {
         "fields": [
           {
@@ -20,9 +19,7 @@
             "name": "item_code",
             "type": "integer",
             "categories": {
-              "resource": "items",
-              "valueField": "item_id",
-              "labelField": "name"
+              "resource": "table-based-categoricals.items"
             }
           },
           {
@@ -35,7 +32,10 @@
     {
       "name": "items",
       "path": "items.csv",
-      "profile": "tabular-data-resource",
+      "type": "category-table",
+      "categoriesOrdered": true,
+      "valueField": "item_id",
+      "labelField": "name",
       "schema": {
         "fields": [
           {
@@ -58,8 +58,7 @@
             "name": "meal_type",
             "type": "string",
             "categories": {
-              "resource": "meal_types",
-              "valueField": "meal_type"
+              "resource": "meal_types"
             }
           }
         ]
@@ -68,7 +67,8 @@
     {
       "name": "meal_types",
       "path": "meal_types.csv",
-      "profile": "tabular-data-resource",
+      "type": "category-table",
+      "valueField": "meal_type",
       "schema": {
         "fields": [
           {
