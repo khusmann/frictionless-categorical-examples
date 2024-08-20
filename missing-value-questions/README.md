@@ -243,7 +243,7 @@ As you can see, not all of the columns make sense for the missing values
 missing value levels and regular value levels to be different, so it makes sense
 for them to reference separate tables.
 
-ALSO! Having separate tables lets you re-use the missing value table definitions
+Also, having separate tables lets you re-use the missing value table definitions
 with many different categorical variables, rather than needing to re-specify the
 missing levels with all of the values.
 
