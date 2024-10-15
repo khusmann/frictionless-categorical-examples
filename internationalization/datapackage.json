@@ -1,0 +1,45 @@
+{
+  "name": "internationalization-example",
+  "description": "An example datapackage that demonstrates table-based categorical types with internationalization",
+  "languages": ["en", "nl"],
+  "resources": [
+    {
+      "name": "fruit-log",
+      "type": "table",
+      "path": "fruit_log.csv",
+      "schema": {
+        "fields": [
+          { "name": "date", "type": "date" },
+          {
+            "name": "fruit_code",
+            "type": "string",
+            "categories": "fruit-codes"
+          },
+          { "name": "quantity", "type": "number" }
+        ]
+      }
+    },
+    {
+      "name": "fruit-codes",
+      "type": "table",
+      "categoryFieldMap": {
+        "value": "code",
+        "label": "name",
+        "ordered": false
+      },
+      "languages": ["en", "nl"],
+      "schema": {
+        "fields": [
+          { "name": "code", "type": "string" },
+          { "name": "name", "type": "string" },
+          { "name": "name@nl", "type": "string" }
+        ]
+      },
+      "data": [
+        { "code": "F1", "name": "Apple", "name@nl": "Appel" },
+        { "code": "F2", "name": "Banana", "name@nl": "Banaan" },
+        { "code": "F3", "name": "Cherry", "name@nl": "Kers" }
+      ]
+    }
+  ]
+}
