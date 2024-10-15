@@ -15,9 +15,7 @@
           {
             "name": "medication_id",
             "type": "string",
-            "categories": {
-              "resource": "medication_types"
-            }
+            "categories": "medication_types"
           },
           {
             "name": "quantity",
@@ -30,8 +28,10 @@
       "name": "medication-types",
       "path": "medication_types.csv",
       "type": "category-table",
-      "valueField": "medication_id",
-      "labelField": "name",
+      "categoryFieldMap": {
+        "valueField": "medication_id",
+        "labelField": "name"
+      },
       "schema": {
         "fields": [
           {
@@ -45,10 +45,7 @@
           {
             "name": "parent_id",
             "type": "string",
-            "categories": {
-              "valueField": "medication_id",
-              "labelField": "name"
-            }
+            "categories": "medication_types"
           }
         ]
       }

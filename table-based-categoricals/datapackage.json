@@ -33,9 +33,11 @@
       "name": "items",
       "path": "items.csv",
       "type": "category-table",
-      "categoriesOrdered": true,
-      "valueField": "item_id",
-      "labelField": "name",
+      "categoryFieldMap": {
+        "value": "item_id",
+        "label": "name",
+        "ordered": true
+      },
       "schema": {
         "fields": [
           {
@@ -68,7 +70,11 @@
       "name": "meal_types",
       "path": "meal_types.csv",
       "type": "category-table",
-      "valueField": "meal_type",
+      "categoryFieldMap": {
+        "value": "meal_type",
+        "label": "description",
+        "ordered": false
+      },
       "schema": {
         "fields": [
           {
