@@ -1,0 +1,50 @@
+{
+  "name": "table-based-categoricals-dualref",
+  "description": "An example datapackage that shows how categorical tables can be referenced in multiple ways",
+  "resources": [
+    {
+      "name": "fruit-log",
+      "type": "table",
+      "path": "fruit_log.csv",
+      "schema": {
+        "fields": [
+          { "name": "date", "type": "date" },
+          {
+            "name": "food_name",
+            "type": "string",
+            "categories": {
+              "resource": "food-codes",
+              "values": "name"
+            }
+          },
+          { "name": "quantity", "type": "number" }
+        ]
+      }
+    },
+    {
+      "name": "food-codes",
+      "type": "table",
+      "schema": {
+        "fields": [
+          { "name": "code", "type": "string" },
+          { "name": "name", "type": "string" },
+          {
+            "name": "parentCode",
+            "type": "string",
+            "categories": {
+              "resource": "food-codes",
+              "values": "code",
+              "labels": "name"
+            }
+          }
+        ]
+      },
+      "data": [
+        { "code": "F", "name": "Fruit", "parentCode": null },
+        { "code": "F1", "name": "Apple", "parentCode": "F" },
+        { "code": "F2", "name": "Banana", "parentCode": "F" },
+        { "code": "F3", "name": "Cherry", "parentCode": "F" }
+      ]
+    }
+  ]
+}
