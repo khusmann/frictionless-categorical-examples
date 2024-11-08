@@ -1,0 +1,63 @@
+{
+  "name": "gbif-example",
+  "description": "An example datapackage that shows how categorical fields can be defined in multiple ways",
+  "resources": [
+    {
+      "name": "occurrence",
+      "type": "table",
+      "description": "A table of occurrence records (very simplified)",
+      "path": "occurrence.csv",
+      "schema": {
+        "fields": [
+          { "name": "gbifID", "type": "string" },
+          { "name": "license", "type": "string" },
+          {
+            "name": "basisOfRecord",
+            "description": "This is an example of how a simple categorical field can be defined",
+            "type": "string",
+            "categories": [
+              "HUMAN_OBSERVATION",
+              "MATERIAL_SAMPLE",
+              "LIVING_SPECIMEN",
+              "MACHINE_OBSERVATION",
+              "PRESERVED_SPECIMEN"
+            ]
+          },
+          {
+            "name": "lifeStage",
+            "description": "This is an example of how a categorical field can be defined with a codelist",
+            "type": "string",
+            "categories": "lifeStage-codelist"
+          },
+          { "name": "eventDate", "type": "date" },
+          { "name": "scientificName", "type": "string" }
+        ]
+      }
+    },
+    {
+      "name": "lifeStage-codelist",
+      "type": "table",
+      "description": "An example codelist for lifestage",
+      "path": "lifeStage_codelist.csv",
+      "categoryFieldMap": {
+        "values": "name"
+      },
+      "schema": {
+        "fields": [
+          { "name": "name", "type": "string" },
+          {
+            "name": "parent",
+            "description": "This is a self-referential field to show how categories can be hierarchical",
+            "type": "string",
+            "categories": "lifeStage-codelist"
+          },
+          { "name": "created", "type": "date" },
+          { "name": "createdBy", "type": "string" },
+          { "name": "modified", "type": "date" },
+          { "name": "modifiedBy", "type": "string" },
+          { "name": "definition", "type": "string" }
+        ]
+      }
+    }
+  ]
+}
